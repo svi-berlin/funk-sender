@@ -1,17 +1,20 @@
 input.onButtonPressed(Button.A, function () {
-    radio.sendNumber(1)
+    signal = 1
 })
 input.onGesture(Gesture.Shake, function () {
-    radio.sendNumber(4)
+    signal = 4
 })
 input.onButtonPressed(Button.AB, function () {
-    radio.sendNumber(3)
+    signal = 3
 })
 input.onButtonPressed(Button.B, function () {
-    radio.sendNumber(2)
+    signal = 2
 })
+let signal = 0
 radio.setGroup(1)
 radio.setTransmitPower(7)
+signal = 0
 basic.forever(function () {
-	
+    basic.showNumber(signal)
+    radio.sendNumber(signal)
 })
